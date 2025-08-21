@@ -14,6 +14,7 @@
 #include <QLineEdit>
 #include <QTextEdit>
 #include <QJsonArray>
+#include <QDockWidget>
 #include "core/systemmonitor.h"
 #include "common/systemdata.h"
 #include "copilot/copilot.h"
@@ -52,6 +53,7 @@ private:
     SystemMonitor *m_monitor;
     QThread *m_monitorThread;
     Copilot *m_copilot;
+    QDockWidget *m_copilotDock;
 
     // --- Widgets ---
     // Monitor Tab

@@ -147,13 +147,17 @@ void MainWindow::applyStylesheet(QProgressBar* bar, int value)
 void MainWindow::setupUi()
 {
     setWindowTitle("Ultimate AI System Monitor");
-    resize(700, 600);
+    resize(850, 600);
     QTabWidget *tabWidget = new QTabWidget(this);
     setCentralWidget(tabWidget);
     tabWidget->addTab(createMonitorTab(), "Live Monitor");
     tabWidget->addTab(createProcessTab(), "Processes");
     tabWidget->addTab(createInfoTab(), "System Information");
-    tabWidget->addTab(m_copilot->createAssistantTab(), "Copilot");
+
+    m_copilotDock = new QDockWidget("Copilot", this);
+    m_copilotDock->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    m_copilotDock->setWidget(m_copilot->createAssistantTab());
+    addDockWidget(Qt::RightDockWidgetArea, m_copilotDock);
 }
 
 QWidget* MainWindow::createProcessTab()
